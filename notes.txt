@@ -1,0 +1,40 @@
+TODO:
+- install latest pegasus from tarball on login04
+- create script to export PATH of that pegasus install
+- create 1 markdown file with all the steps in the tutorial 
+    (basicaly a cheat sheet where people can just copy and paste things
+       to run as we move a long)
+- create sample workflow and upload to GITHUB
+
+OUTLINE
+-------
+1. High Level Overview
+    - distributed computing network of mostly universities and national labs
+        who contribute their local compute resources when they are not being 
+        used by local users 
+        - some resources may be dedicated to OSG while others may be used only
+            when they are sitting idle (like over the weekend)
+
+    - to use OSG, you just need to be affiliated with a United States research
+        institution (university or lab) 
+
+    - to access OSG you don't have to contribute resources
+
+    - "Submit locally, Run globally": researchers can submit batch jobs from their
+        home institution - or OSG-provided submit points - in order to access their
+        local resources and expand elastically out to the OSG
+
+    - some stats
+        - provided more than 1.2 billion cpu hours in last 12 months
+        - consists of computing and storage elements at over 100 individual
+            sites spanning the United States
+
+    - OSG Connect is the entrypoint in OSG
+
+    - tradeoff
+        - don't know exactly where job will run 
+        - can't garuantee that you will have enough time for your job to
+            finish
+
+    - individual files per job can be up to 10s of GB
+            
