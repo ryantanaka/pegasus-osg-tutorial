@@ -7,6 +7,13 @@ from Pegasus.api import *
 
 log.basicConfig(level=log.DEBUG)
 
+# --- Remove Output File From Previous Run ------------------------------------
+output_file = Path(".") / "wf-output/output_file.txt"
+try:
+    output_file.unlink()
+except FileNotFoundError:
+    pass
+
 # --- Transformation Catalog ---------------------------------------------------
 hello_world = Transformation(
                 name="hello_world", 
@@ -17,6 +24,10 @@ hello_world = Transformation(
                 is_stageable=True
             )
 
+hello_world.add_condor_profile(requirements='HAS_SINGULARITY == True')
+hello_world.add_profiles(Namespace.CONDOR, key="+SingularityImage", value='"/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3-cuda-10.1"')
+hello_world.add_pegasus_profile(gpus=1)
+
 tc = TransformationCatalog().add_transformations(hello_world)
 
 # --- Workflow -----------------------------------------------------------------
@@ -25,6 +36,7 @@ job.add_outputs(File("output_file.txt"))
 
 wf = Workflow("osg-workflow")
 wf.add_jobs(job)
+wf.add_transformation_catalog(tc)
 
 try:
     wf.plan(submit=True)\
@@ -36,10 +48,9 @@ except PegasusClientError as e:
     sys.exit(1)
 
 # --- Resulting Output File ----------------------------------------------------
-output_file = Path(".") / "wf-output/output_file.txt"
 if output_file.exists():
-    print("*"*80)
-    print("* Workflow Output")
-    print("*"*80)
+    print("\x1b[1;34m" + ("*"*80) + ("\n* Workflow Output") + (62 * " ") + "*\n" + ("*"*80) + "\x1b[0m")
     with output_file.open("r") as f:
         print(f.read())
+else:
+    print("Cannot find {}, workflow must have failed...".format(output_file))
