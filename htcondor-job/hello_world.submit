@@ -1,0 +1,24 @@
+# executable
+executable = hello_world.sh
+
+# file to save terminal output to
+error = hello_world.err
+output = hello_world.out
+
+# output file to transfer back
+transfer_output_files = output_file.txt
+
+# request the resources that the job will need
+request_cpus = 1
+request_gpus = 1
+request_memory = 8 MB
+request_disk = 1 MB
+
+# container settings
+Requirements = HAS_SINGULARITY == TRUE
++SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3-cuda-10.1"
+
+# queue one job
+queue 1
+
+

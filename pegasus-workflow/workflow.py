@@ -24,7 +24,7 @@ hello_world = Transformation(
                 is_stageable=True
             )
 
-# Require that this job is to be run in a specified container.
+# Require that this job is to be run in a specified container. (quotes are needed for image name)
 #hello_world.add_condor_profile(requirements='HAS_SINGULARITY == True')
 #hello_world.add_profiles(Namespace.CONDOR, key="+SingularityImage", value='"/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3-cuda-10.1"')
 
