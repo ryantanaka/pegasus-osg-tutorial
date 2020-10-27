@@ -6,12 +6,18 @@
 wget https://download.pegasus.isi.edu/pegasus/5.0.0dev/pegasus-binary-5.0.0dev-x86_64_rhel_7.tar.gz \
     && tar -xzvf pegasus-binary-5.0.0dev-x86_64_rhel_7.tar.gz \
     && cd pegasus-5.0.0dev/bin \
-    && export PATH=$(pwd):$PATH
+    && export PATH=$(pwd):$PATH \
+    && export PYTHONPATH=$(pegasus-config --python)
 ```
 
 Set `PATH` to pegasus install.
 ```
 export PATH=/public/ryantanaka/pegasus-5.0.0dev/bin:$PATH
+```
+
+Set PYTHONPATH
+```
+export PYTHONPATH=$(pegasus-config --python)
 ```
 
 ## Running Sample Pegasus Workflow
