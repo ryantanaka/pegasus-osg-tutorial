@@ -24,9 +24,12 @@ hello_world = Transformation(
                 is_stageable=True
             )
 
-hello_world.add_condor_profile(requirements='HAS_SINGULARITY == True')
-hello_world.add_profiles(Namespace.CONDOR, key="+SingularityImage", value='"/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3-cuda-10.1"')
-hello_world.add_pegasus_profile(gpus=1)
+# Require that this job is to be run in a specified container.
+#hello_world.add_condor_profile(requirements='HAS_SINGULARITY == True')
+#hello_world.add_profiles(Namespace.CONDOR, key="+SingularityImage", value='"/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3-cuda-10.1"')
+
+# Require that this job needs a GPU.
+#hello_world.add_pegasus_profile(gpus=1)
 
 tc = TransformationCatalog().add_transformations(hello_world)
 
