@@ -2,6 +2,9 @@
 
 set -e
 
+printf "I'm running on $(hostname -f)\n" > output_file.txt
+printf "OSG site: $OSG_SITE_NAME\n\n" >> output_file.txt
+
 printf "Hello OSG!\nI ran on this OS:\n" >> output_file.txt
 # show OS info
 cat /etc/os-release >> output_file.txt
