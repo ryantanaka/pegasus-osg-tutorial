@@ -11,8 +11,8 @@ transfer_output_files = output_file.txt
 # request the resources that the job will need
 request_cpus = 1
 request_gpus = 1
-request_memory = 8 MB
-request_disk = 1 MB
+request_memory = 1 GB
+request_disk = 1 GB
 
 # container settings
 Requirements = HAS_SINGULARITY == TRUE
