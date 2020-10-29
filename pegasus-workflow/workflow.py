@@ -25,7 +25,8 @@ hello_world = Transformation(
             )
 
 # Require that this job is to be run in a specified container. (quotes are needed for image name)
-#hello_world.add_condor_profile(requirements='HAS_SINGULARITY == True')
+# Omit UConn as that site was giving us problems.
+#hello_world.add_condor_profile(requirements='GLIDEIN_Site =!= "UConn" && HAS_SINGULARITY == True')
 #hello_world.add_profiles(Namespace.CONDOR, key="+SingularityImage", value='"/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3-cuda-10.1"')
 
 # Require that this job needs a GPU.
