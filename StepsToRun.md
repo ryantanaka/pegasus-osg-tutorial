@@ -38,9 +38,9 @@ cd pegasus-osg-tutorial/pegasus-workflow
 ## Setting Up Latest Pegasus 
 
 ```
-wget https://download.pegasus.isi.edu/pegasus/5.0.0dev/pegasus-binary-5.0.0dev-x86_64_rhel_7.tar.gz \
-    && tar -xzvf pegasus-binary-5.0.0dev-x86_64_rhel_7.tar.gz \
-    && cd pegasus-5.0.0dev/bin \
-    && export PATH=$(pwd):$PATH \
-    && export PYTHONPATH=$(pegasus-config --python)
+wget https://download.pegasus.isi.edu/pegasus/5.0.0dev/pegasus-binary-5.0.0dev-x86_64_rhel_7.tar.gz 
+tar -xzvf pegasus-binary-5.0.0dev-x86_64_rhel_7.tar.gz 
+cd pegasus-5.0.0dev/bin 
+export PATH=$(pwd):$PATH 
+export PYTHONPATH=$(pegasus-config --python)
 ```
